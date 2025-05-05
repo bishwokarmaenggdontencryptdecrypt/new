@@ -305,6 +305,19 @@
     </div>
 </div>
 <script>
+    document.addEventListener('contextmenu', (e) => e.preventDefault());
+
+// Disable common developer shortcuts
+document.addEventListener('keydown', function (e) {
+    if (
+        e.key === "F12" ||
+        (e.ctrlKey && e.shiftKey && ['I', 'J', 'C', 'K'].includes(e.key.toUpperCase())) ||
+        (e.ctrlKey && ['U', 'S'].includes(e.key.toUpperCase())) ||
+        (e.metaKey && e.altKey && e.key.toUpperCase() === 'I') // Mac Cmd+Opt+I
+    ) {
+        e.preventDefault();
+    }
+});
     document.addEventListener('DOMContentLoaded', function() {
         const images = ['p21.jpeg', 'p22.jpeg', 'p23.jpeg'];
         const mainImg = document.querySelector('.active-main-image');
