@@ -462,6 +462,21 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('contextmenu', (e) => e.preventDefault());
+
+// Disable common developer shortcuts
+document.addEventListener('keydown', function (e) {
+    if (
+        e.key === "F12" ||
+        (e.ctrlKey && e.shiftKey && ['I', 'J', 'C', 'K'].includes(e.key.toUpperCase())) ||
+        (e.ctrlKey && ['U', 'S'].includes(e.key.toUpperCase())) ||
+        (e.metaKey && e.altKey && e.key.toUpperCase() === 'I') // Mac Cmd+Opt+I
+    ) {
+        e.preventDefault();
+    }
+});
+    </script>
 </body>
 
 </html>
